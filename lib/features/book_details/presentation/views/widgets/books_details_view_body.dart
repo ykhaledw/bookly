@@ -1,3 +1,5 @@
+import 'package:bookly/features/book_details/presentation/views/widgets/custom_book_details_app_bar.dart';
+import 'package:bookly/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -5,25 +7,13 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        CustomBookDetailsAppBar(),
-      ],
+    return const SafeArea(
+      child: Column(
+        children: [
+          CustomBookDetailsAppBar(),
+          CustomBookImage(),
+        ],
+      ),
     );
-  }
-}
-
-
-class CustomBookDetailsAppBar extends StatelessWidget {
-  const CustomBookDetailsAppBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        IconButton(onPressed: (){}, icon: const Icon(Icons.close),),
-        IconButton(onPressed: (){}, icon: const Icon(Icons.shopping_cart_outlined),),
-      ],);
   }
 }
