@@ -33,6 +33,7 @@ dependencies:
     sdk: flutter
   font_awesome_flutter: ^10.6.0
   get: ^4.6.6
+  go_router: ^12.1.3
   google_fonts: ^6.1.0
 
 dev_dependencies:
@@ -65,8 +66,8 @@ flutter:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+    #       - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
     - family: GT Sectra Fine Book
       fonts:
         - asset: assets/fonts/GT_Sectra_Fine_Book.ttf
