@@ -21,7 +21,7 @@ class HomeRepoImplementation implements HomeRepo {
       }
       return right(books);
     } catch (e) {
-      return left(ServiceFailure());
+      return left(ServerFailure(e.toString()));
     }
   }
 
