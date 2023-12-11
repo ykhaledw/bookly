@@ -1,13 +1,14 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/app_router.dart';
-import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BooksListItem extends StatelessWidget {
-  const BooksListItem({super.key});
+  const BooksListItem({super.key, required this.imageUrl});
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +28,8 @@ class BooksListItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.red,
-                    image: const DecorationImage(
-                      image: AssetImage(AssetsData.kTestImage),
+                    image: DecorationImage(
+                      image: NetworkImage(imageUrl),
                       fit: BoxFit.fill,
                     ),
                   ),
