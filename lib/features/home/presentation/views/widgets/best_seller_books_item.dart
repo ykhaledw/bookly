@@ -1,15 +1,15 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BooksListItem extends StatelessWidget {
-  const BooksListItem({super.key, required this.imageUrl});
+  const BooksListItem({super.key, required this.bookModel});
 
-  final String imageUrl;
-
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -29,7 +29,7 @@ class BooksListItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.red,
                     image: DecorationImage(
-                      image: NetworkImage(imageUrl),
+                      image: NetworkImage(bookModel.volumeInfo.imageLinks.thumbnail),
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -45,7 +45,7 @@ class BooksListItem extends StatelessWidget {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.5,
                       child: Text(
-                        'Harry Potter and the Goblet of Fire',
+                        bookModel.volumeInfo.title!,
                         style: Styles.textStyle20
                             .copyWith(fontFamily: kGtSectraFine),
                         maxLines: 2,
@@ -56,18 +56,21 @@ class BooksListItem extends StatelessWidget {
                       height: 2,
                     ),
                     Text(
-                      'J.K. Rowling',
+                      bookModel.volumeInfo.authors![0],
                       style: Styles.textStyle14
                           .copyWith(color: const Color(0xff707070)),
                     ),
-                    const Row(
+                     Row(
                       children: [
-                        Text(
-                          '19.99 €',
+                        const Text(
+                          'Free',
                           style: Styles.textStyle20,
                         ),
-                        Spacer(),
-                        BookRating(),
+                        const Spacer(),
+                        BookRating(
+                          rating: bookModel.volumeInfo.averageRating ?? 0,
+                          count: bookModel.volumeInfo.ratingsCount ?? 0,
+                          ),
                       ],
                     ),
                   ],
