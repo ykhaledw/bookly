@@ -14,7 +14,7 @@ class BooksListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kBookDetailsView);
+        GoRouter.of(context).push(AppRouter.kBookDetailsView, extra: bookModel);
       },
       child: SizedBox(
         height: 125,
@@ -29,7 +29,7 @@ class BooksListItem extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                     color: Colors.red,
                     image: DecorationImage(
-                      image: NetworkImage(bookModel.volumeInfo.imageLinks.thumbnail),
+                      image: NetworkImage(bookModel.volumeInfo.imageLinks?.thumbnail ?? ''),
                       fit: BoxFit.fill,
                     ),
                   ),
