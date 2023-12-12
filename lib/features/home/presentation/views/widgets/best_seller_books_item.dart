@@ -3,6 +3,7 @@ import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,16 +23,15 @@ class BooksListItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Row(
             children: [
-              AspectRatio(
-                aspectRatio: 2.5 / 4,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.red,
-                    image: DecorationImage(
-                      image: NetworkImage(bookModel.volumeInfo.imageLinks?.thumbnail ?? ''),
-                      fit: BoxFit.fill,
-                    ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: AspectRatio(
+                  aspectRatio: 2.5 / 4,
+                  child: CachedNetworkImage(
+                    imageUrl: bookModel.volumeInfo.imageLinks?.thumbnail ?? '',
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),
@@ -53,14 +53,17 @@ class BooksListItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 2,
+                      height: 3,
                     ),
                     Text(
                       bookModel.volumeInfo.authors![0],
                       style: Styles.textStyle14
                           .copyWith(color: const Color(0xff707070)),
                     ),
-                     Row(
+                    const SizedBox(
+                      height: 3,
+                    ),
+                    Row(
                       children: [
                         const Text(
                           'Free',
@@ -70,7 +73,7 @@ class BooksListItem extends StatelessWidget {
                         BookRating(
                           rating: bookModel.volumeInfo.averageRating ?? 0,
                           count: bookModel.volumeInfo.ratingsCount ?? 0,
-                          ),
+                        ),
                       ],
                     ),
                   ],
