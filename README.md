@@ -1,16 +1,29 @@
 # bookly
 
-A new Flutter project.
+Books App built with Flutter, providing users with an immersive experience in the world of novels. This dynamic application enables users to discover and explore a vast library of novels available over the internet. Key features include:
 
-## Getting Started
+- Extensive Novel Collection
+- Online Viewing
+- User-Friendly Interface
+- Personalization Features
 
-This project is a starting point for a Flutter application.
+This Books App, developed with Flutter, merges functionality with a delightful user interface, delivering a comprehensive and enjoyable platform for avid readers to explore, read, and download their preferred novels.
 
-A few resources to get you started if this is your first Flutter project:
+## Tools
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# UI development
+- Google fonts : to ensure the UI is as same as design
+- Go Router : to provide smooth navigation between screens
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# App Logic
+- Cached Network Image : to cache images for each book
+- dartz , equatable : to generate models that is suited with parameters in API
+- GetIt : a service locator to help in method implementation
+- Bloc (Cubit) : used as state management
+- MVVM : the main arch. of the app
+
+
+## Features
+- Splash View
+- Home View : Featured books , Newest books
+- Book Details View : Book details , Similar books
